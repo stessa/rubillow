@@ -66,7 +66,7 @@ module Rubillow
           :total => @parser.xpath('//pageViewCount/total').first.text
           }
           puts @parser.xpath
-          @price = @parser.xpath('//price').first ? @parser.xpath('//price').first.text : just_use_zestimate(@parser) || { message: "No price available on this", code: -1}
+          @price = @parser.xpath('//price').first ? { price: @parser.xpath('//price').first.text, code: 0, message: "Successful price from xml" }: just_use_zestimate(@parser) || { message: "No price available on this", code: -1}
           # @parser.xpath('//zestimate/amount') ||
           # @neighborhood = @parser.xpath('//neighborhood').first.text
           # @school_district = @parser.xpath('//schoolDistrict').first.text
