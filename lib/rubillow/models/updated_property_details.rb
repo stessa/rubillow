@@ -64,17 +64,17 @@ module Rubillow
           extract_images(@parser)
 
           @page_views = {
-          :current_month => @parser.xpath('//pageViewCount/currentMonth').first.text,
-          :total => @parser.xpath('//pageViewCount/total').first.text
+            :current_month => (@parser.xpath('//pageViewCount/currentMonth').first.text rescue nil),
+            :total => (@parser.xpath('//pageViewCount/total').first.text rescue nil)
           }
           puts @parser.xpath
           @price = OpenStruct.new( @parser.xpath('//price').first ? { price: @parser.xpath('//price').first.text, code: 0, message: "Successful price from xml" }: just_use_zestimate(@parser) || { message: "No price available on this", code: -1})
 
-          @neighborhood = @parser.xpath('//neighborhood').first.text
-          @school_district = @parser.xpath('//schoolDistrict').first.text
-          @elementary_school = @parser.xpath('//elementarySchool').first.text
-          @middle_school = @parser.xpath('//middleSchool').first.text
-          @home_description = @parser.xpath('//homeDescription').first.text
+          @neighborhood = @parser.xpath('//neighborhood').first.text rescue nil
+          @school_district = @parser.xpath('//schoolDistrict').first.text rescue nil
+          @elementary_school = @parser.xpath('//elementarySchool').first.text rescue nil
+          @middle_school = @parser.xpath('//middleSchool').first.text rescue nil
+          @home_description = @parser.xpath('//homeDescription').first.text rescue nil
 
           @posting = {}
           @parser.xpath('//posting').children.each do |elm|
