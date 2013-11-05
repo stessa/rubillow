@@ -1,3 +1,5 @@
+require 'ostruct'
+
 module Rubillow
   module Models
     # List of updated attributes for a property.
@@ -67,12 +69,12 @@ module Rubillow
           }
           puts @parser.xpath
           @price = OpenStruct.new( @parser.xpath('//price').first ? { price: @parser.xpath('//price').first.text, code: 0, message: "Successful price from xml" }: just_use_zestimate(@parser) || { message: "No price available on this", code: -1})
-          # @parser.xpath('//zestimate/amount') ||
-          # @neighborhood = @parser.xpath('//neighborhood').first.text
-          # @school_district = @parser.xpath('//schoolDistrict').first.text
-          # @elementary_school = @parser.xpath('//elementarySchool').first.text
-          # @middle_school = @parser.xpath('//middleSchool').first.text
-          # @home_description = @parser.xpath('//homeDescription').first.text
+
+          @neighborhood = @parser.xpath('//neighborhood').first.text
+          @school_district = @parser.xpath('//schoolDistrict').first.text
+          @elementary_school = @parser.xpath('//elementarySchool').first.text
+          @middle_school = @parser.xpath('//middleSchool').first.text
+          @home_description = @parser.xpath('//homeDescription').first.text
 
           @posting = {}
           @parser.xpath('//posting').children.each do |elm|

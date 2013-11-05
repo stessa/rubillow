@@ -17,7 +17,7 @@ describe Rubillow::Models::UpdatedPropertyDetails do
     data.address[:longitude].should == "-122.347938"
     data.page_views[:current_month].should == "27"
     data.page_views[:total].should == "8095"
-    data.price.should == "1290000"
+    data.price.price.should == "1290000"
     data.neighborhood.should == "Queen Anne"
     data.school_district.should == "Seattle"
     data.elementary_school.should == "John Hay"
