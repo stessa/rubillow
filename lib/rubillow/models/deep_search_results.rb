@@ -25,7 +25,8 @@ module Rubillow
         # @principal = DeepSearchResult.new(@parser.xpath('//principal').to_xml)
         
         @results = {}
-        @parser.xpath('//results/result').each do |elm|
+        @parser.xpath('//result').each do |elm|
+          puts elm.to_s
           key = elm.attribute('zpid').value
           @results[key] = DeepSearchResult.new(elm.to_xml)
         end
