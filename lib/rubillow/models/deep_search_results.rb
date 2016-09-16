@@ -24,11 +24,11 @@ module Rubillow
         
         # @principal = DeepSearchResult.new(@parser.xpath('//principal').to_xml)
         
-        @results = {}
+        @results = Array.new
         @parser.xpath('//result').each do |elm|
           puts elm.to_s
-          key = elm.attribute('zpid').value
-          @results[key] = DeepSearchResult.new(elm.to_xml)
+          # key = elm.attribute('zpid').value
+          @results.push DeepSearchResult.new(elm.to_xml)
         end
       end
     end
