@@ -27,7 +27,7 @@ module Rubillow
         @results = {}
         @parser.xpath('//results/result').each do |elm|
           key = elm.attribute('zpid').value
-          @comparables[key] = DeepSearchResult.new(elm.to_xml)
+          @results[key] = DeepSearchResult.new(elm.to_xml)
         end
       end
     end
