@@ -36,7 +36,7 @@ module Rubillow
         raise ArgumentError, "The citystatezip option is required"
       end
     
-      Models::DeepSearchResult.new(Rubillow::Request.get("GetDeepSearchResults", options))
+      Models::DeepSearchResults.new(Rubillow::Request.get("GetDeepSearchResults", options))
     end
     
     # Retrieve extended details for property and its comps.

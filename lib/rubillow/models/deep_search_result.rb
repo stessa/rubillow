@@ -22,9 +22,6 @@ module Rubillow
       
       # @return [String] price property was last sold for
       attr_accessor :last_sold_price
-
-      # @return [String] finished sq ft
-      attr_accessor :finished_sq_ft
       
       protected
       
@@ -43,7 +40,6 @@ module Rubillow
           @last_sold_date = Date.strptime(tmp, "%m/%d/%Y")
         end
         @last_sold_price = xpath_if_present('//lastSoldPrice', :text, @parser)
-        @finished_sq_ft = xpath_if_present('//finishedSqFt', :text, @parser)
       end
     end
   end
