@@ -67,7 +67,7 @@ module Rubillow
             :current_month => (@parser.xpath('//pageViewCount/currentMonth').first.text rescue nil),
             :total => (@parser.xpath('//pageViewCount/total').first.text rescue nil)
           }
-          puts @parser.xpath
+          #puts @parser.xpath
           @price = OpenStruct.new( @parser.xpath('//price').first ? { price: @parser.xpath('//price').first.text, code: 0, message: "Successful price from xml" }: just_use_zestimate(@parser) || { message: "No price available on this", code: -1})
 
           @neighborhood = @parser.xpath('//neighborhood').first.text rescue nil
